@@ -1,91 +1,128 @@
-/* Базовые требования проекта */
+/* Переменные */
+:root {
+  --footer-text-color: #F4F4FD;
+  --primary-color: #4d5ae5; /* для кнопки героя через css-переменную */
+}
+
+/* База и сбросы, как требует задание */
+h1, h2, h3, p { margin: 0; }
+ul { margin: 0; padding: 0; list-style: none; }
+img { display: block; }
+
 body {
   font-family: "Roboto", sans-serif;
   color: #434455;
   background-color: #ffffff;
 }
 
-/* Логотип в навигации/футере */
+/* Логотип */
 .site-logo {
   font-family: "Raleway", sans-serif;
   font-weight: 700;
   font-size: 18px;
-  line-height: 1.17;        /* 21px при 18px */
-  letter-spacing: 0.03em;   /* 3% */
+  line-height: 1.17;
+  letter-spacing: 0.03em;
   text-transform: uppercase;
   color: #4d5ae5;
 }
+.site-logo .logo-accent { color: #2e2f42; }
 
-.site-logo .logo-accent {
-  color: #2e2f42;           /* в футере позже заменим на #f4f4fd по критериям футера */
-}
-
-/* Ссылки меню навигации (одинаковый класс для всех пунктов) */
+/* Навигация (типографика ссылок + ховер/фокус из прошлого задания) */
 .nav-link {
   font-weight: 500;
   font-size: 16px;
-  line-height: 1.5;         /* 24px при 16px */
-  letter-spacing: 0.02em;   /* 2% */
+  line-height: 1.5;
+  letter-spacing: 0.02em;
   color: #2e2f42;
+  padding: 24px 0; /* высота хедера формируется паддингами ссылок */
 }
-
 .nav-link:hover,
-.nav-link:focus {
-  color: #404bbf;
-}
+.nav-link:focus { color: #404bbf; }
 
-/* Адрес в header */
-.site-address {
-  font-style: normal;
-}
-
-/* Ссылки контактов (email/phone) */
+/* Адрес */
+/* address без курсива уже задан раньше: */
+.site-address { font-style: normal; }
 .contact-link {
   font-size: 16px;
-  line-height: 1.5;         /* 24px при 16px */
-  letter-spacing: 0.02em;   /* 2% */
+  line-height: 1.5;
+  letter-spacing: 0.02em;
   color: #434455;
 }
-
 .contact-link:hover,
-.contact-link:focus {
-  color: #404bbf;
+.contact-link:focus { color: #404bbf; }
+
+/* Контейнер */
+.container {
+  width: 1158px;
+  margin: 0 auto;
+  padding: 0 15px;
 }
 
-/* Hero section */
-.hero {
-  background-color: #2e2f42;
+/* Визуально скрытый заголовок (для features) */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
 }
 
+/* HEADER */
+.page-header { border-bottom: 1px solid #e7e9fc; }
+.header-container { display: flex; }
+.main-nav { display: flex; align-items: center; }
+.site-logo { margin-right: 76px; }
+.menu { display: flex; gap: 40px; }
+.contacts-list { display: flex; gap: 40px; }
+
+/* HERO */
+.hero { background-color: #2e2f42; padding: 188px 0; }
 .hero-title {
   font-size: 56px;
   line-height: 1.07;
   text-align: center;
   letter-spacing: 0.02em;
   color: #ffffff;
-  /* шрифт наследуется от body (Roboto) */
   font-weight: 700;
+  max-width: 496px;
+  margin-left: auto;
+  margin-right: auto;
 }
-
 .hero-button {
-  background-color: #4D5AE5;
+  display: block;
+  min-width: 169px;
+  height: 56px;
+  border: none;
+  background-color: var(--primary-color);
+  border-radius: 4px;
+  cursor: pointer;
+
   font-family: "Roboto", sans-serif;
   font-weight: 500;
   font-size: 16px;
   line-height: 1.5;
   letter-spacing: 0.04em;
   color: #ffffff;
-  cursor: pointer;
-}
 
-/* hover/focus — только изменение фона по критерию */
+  /* центрирование по макету (разрешено через display:block + margin) */
+  margin-left: auto;
+  margin-right: auto;
+}
 .hero-button:hover,
-.hero-button:focus {
-  background-color: #404BBF;
-}
+.hero-button:focus { background-color: #404BBF; }
 
+/* FEATURES */
+.features { padding: 120px 0; }
+.features-list { display: flex; gap: 24px; }
+.features-item { width: calc((100% - 72px) / 4); }
+.features .card-title { margin-bottom: 8px; }
 
-/* Features */
+/* Типографика, уже заданная ранее (переиспользуем) */
 .card-title {
   font-weight: 500;
   font-size: 20px;
@@ -93,7 +130,6 @@ body {
   letter-spacing: 0.02em;
   color: #2e2f42;
 }
-
 .card-text {
   font-size: 16px;
   line-height: 1.5;
@@ -101,11 +137,8 @@ body {
   color: #434455;
 }
 
-/* Team (Section #3) */
-.team {
-  background-color: #F4F4FD;
-}
-
+/* TEAM */
+.team { padding: 120px 0; background-color: #F4F4FD; }
 .section-title {
   font-size: 36px;
   line-height: 1.11;
@@ -113,38 +146,43 @@ body {
   letter-spacing: 0.02em;
   text-transform: capitalize;
   color: #2e2f42;
-  font-weight: 700; /* типографика заголовка секции */
+  font-weight: 700;
 }
-
+.team .section-title { margin-bottom: 72px; }
+.team-list { display: flex; gap: 24px; }
 .team-item {
+  width: calc((100% - 72px) / 4);
   background-color: #FFFFFF;
+  border-radius: 0 0 4px 4px;
 }
+.team-meta { padding: 32px 0; }
+.team-meta .card-title { text-align: center; margin-bottom: 8px; }
+.team-meta .card-text { text-align: center; }
 
-/* Центровка текстов карточек только внутри секции команды */
-.team .card-title,
-.team .card-text {
-  text-align: center;
+/* PORTFOLIO */
+.portfolio { padding-top: 120px; padding-bottom: 120px; }
+.portfolio .section-title { margin-bottom: 72px; }
+.portfolio-list {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 24px;
+  row-gap: 48px;
 }
-
-
-/* CSS-переменная для цвета текста футера */
-:root {
-  --footer-text-color: #F4F4FD;
+.portfolio-item { width: calc((100% - 48px) / 3); }
+.portfolio-meta {
+  padding: 32px 16px;
+  border: 1px solid #e7e9fc;
+  border-top: none;
 }
+.portfolio .card-title { margin-bottom: 8px; }
 
-/* Footer */
-.site-footer {
-  background-color: #2e2f42;
-}
-
-/* Лого в футере: тот же класс, но цвет span как в критериях футера */
-.site-footer .site-logo .logo-accent {
-  color: #f4f4fd;
-}
-
-/* Текст футера по критериям */
+/* FOOTER */
+.site-footer { background-color: #2e2f42; padding: 100px 0; }
+.site-footer .site-logo { display: inline-block; margin-bottom: 16px; }
+.site-footer .site-logo .logo-accent { color: #f4f4fd; }
 .footer-text {
   line-height: 1.5;
   letter-spacing: 0.02em;
   color: var(--footer-text-color);
+  max-width: 264px;
 }
